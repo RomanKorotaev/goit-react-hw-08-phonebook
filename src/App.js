@@ -1,10 +1,14 @@
-// import './App.css';
+import {Link, Routes, Route} from 'react-router-dom'
 import s from "./App.module.css";
 import {Home} from './pages/Home/Home'
 import {Register} from './pages/Register/Register'
 import {Login} from './pages/Login/Login'
+import {PrivateRoute} from './routes/PrivateRoute'
+import {PublicRoute} from './routes/PublicRoute'
 
-import {Link, Routes, Route} from 'react-router-dom'
+const isAuth = false;
+
+
 function App() {
   return (
     <div className={s.container}>
@@ -29,9 +33,9 @@ function App() {
 
       <main>
         <Routes>
-            <Route path="/" element = {<Home/>} />
-            <Route path="/login" element = {<Login/>} />
-            <Route path="/register" element = {<Register/>} />
+            <Route path="/" element = {<PrivateRoute isAuth={isAuth} component={Home} />} />
+            <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
+            <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} />
         </Routes>
 
       </main>
