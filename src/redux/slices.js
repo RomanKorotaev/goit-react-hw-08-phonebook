@@ -1,16 +1,16 @@
-import {createSlise} from '@redux/toolkit'
+import {createSlice} from '@reduxjs/toolkit'
 
 
-const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
+// const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
 
-const userLogin = '/users/login'
-const userRegister = '/users/register'
-const userLogout = '/users/logout'
-const userCurrent = '/users/current'
+// const userLogin = '/users/login'
+// const userRegister = '/users/signup'
+// const userLogout = '/users/logout'
+// const userCurrent = '/users/current'
 
-const authSlice = createSlise ({
+const authSlice = createSlice ({
     name: "auth",
-    initState: {
+    initialState: {
         user: {name: "", email: "" },
         token: '',
         error: null,
@@ -23,7 +23,7 @@ const authSlice = createSlise ({
                 return {
                     ...state,
                     myProp: action.payload,
-                }
+                    }
                 }
             },
 
