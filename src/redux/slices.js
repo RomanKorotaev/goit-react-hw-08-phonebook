@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {registerThunk} from "./thunk"
+import {registerThunk, loginThunk} from "./thunk"
+
 
 // const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
 
@@ -49,7 +50,30 @@ const authSlice = createSlice ({
                     isLoading: false,
                     error: action.payload
                 }
-            }
+            },
+
+            [loginThunk.pending] (state,action) {
+                return {
+                    ...state,
+                    isLoading: true,
+                }
+            },
+            [loginThunk.fulfilled] (state,action) {
+                return {
+                    ...state,
+                    isLoading: false,
+                    user: action.payload.user,
+                    token: action.payload.token,
+                    isAuth: true,
+                }
+            },
+            [loginThunk.rejected] (state,action) {
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.payload
+                }
+            },
         }
 })
 
@@ -58,5 +82,5 @@ export  const {renameProp} = authSlice.actions;
 export default authSlice.reducer;
 
 // ====================== CONTACTS ======================
-const BASE_CONTACT_URL = `https://619a41019022ea0017a7b0ae.mockapi.io/api_phonebook/v1/`
-const contacts = `/contacts` ;
+// const BASE_CONTACT_URL = `https://619a41019022ea0017a7b0ae.mockapi.io/api_phonebook/v1/`
+// const contacts = `/contacts` ;
