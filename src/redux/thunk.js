@@ -54,21 +54,32 @@ const response = await fetch(BASE_USER_URL + userLogin, {
 // ============= CURRENT USER THUNK =============
 export const currentThunk = createAsyncThunk (
     "user/current",
-    async (user, {rejectWithValue})=> {
+    async (user, {rejectWithValue, getState})=> {
+        const state= getState();
+        console.log ("redux store:   state= getState()  : ",state);
+        console.log ("redux store:  state.auth =  : ",state.auth);
+        console.log ("redux store:  state.auth.token =  : ",state.auth.token)
+       
+        if (!state.auth.token) return;
+        
     try{
-const response = await fetch(BASE_USER_URL + userLogin, {
-    method: 'POST',
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify(user)
-    });
-    console.log ("response", response);
-    const data = await response.json();
-    console.log ("data", data); //{user: {name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}, token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…wMTN9.1N76a-NE-wTt5M4UYuFCfkuYIDJsw6Ah-hA2glSRZvY'}
-    //"germiona_greinger@gmail.com"
-    return data; //action.payload
-    } catch (err){
-        rejectWithValue ({error: err.message})
-    }
+        const response = await fetch(BASE_USER_URL + userCurrent, {
+                method: 'GET',
+                headers: {
+                    // "Content-Type": "application/json",
+                    // "Authorization" : `Bearer ${state.auth.token}`,
+                    Authorization : `Bearer ${state.auth.token}`,
+                },
+            
+                });
+                console.log ("response", response);
+                const data = await response.json();
+                console.log ("data = await response.json()   : ", data); //{name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}
+                //"germiona_greinger@gmail.com"
+                return data; //action.payload
+        } catch (err){
+            console.log ("err = ", err)
+                // rejectWithValue ({error: err.message});
+                rejectWithValue (err.message)
+            }
 })
