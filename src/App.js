@@ -8,16 +8,23 @@ import {PublicRoute} from './routes/PublicRoute';
 
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { currentThunk } from './redux/thunk';
+import { currentThunk, logoutThunk } from './redux/thunk';
 
 const isAuth = false;
 
 
 function App() {
-  const dispatch = useDispatch ()
-  useEffect ( ()=> {
-    dispatch(currentThunk());
-  }, [dispatch])
+
+    const dispatch = useDispatch ();
+
+    useEffect ( ()=> {
+      dispatch(currentThunk());
+    }, [dispatch])
+
+    const handleLogout = ()=> {
+      console.log ("Click! ;)")
+      dispatch(logoutThunk());
+    }
 
   return (
     <div className={s.container}>
@@ -36,6 +43,10 @@ function App() {
               <li>
                 <Link  className={s.contactsTitle}  to= "/register">Register</Link>
               </li>
+
+              <li>
+                <button type="button" onClick ={handleLogout} >Log Out</button>
+                </li>
             </ul>
           </nav>
       </header>
