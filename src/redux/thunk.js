@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
+const BASE_USER_URL = `https://connections-api.herokuapp.com` ;
 
 const userLogin = '/users/login'
 const userRegister = '/users/signup'
@@ -14,6 +14,9 @@ export const registerThunk = createAsyncThunk (
     try{
 const response = await fetch(BASE_USER_URL+userRegister, {
     method: 'POST',
+    headers: {
+        "Content-Type": "application/json"
+    },
     body: JSON.stringify(user)
     });
     console.log (response);

@@ -6,7 +6,7 @@ export function  Register () {
 
 const [name, setName]= useState ("");
 const [email, setEmail]= useState ("");
-const [password, setpassworP]= useState ("");
+const [password, setPassword]= useState ("");
 
 const dispatch = useDispatch();
 
@@ -17,11 +17,11 @@ const handleChange = (e) =>{
             break;
 
             case "email":
-            setName (e.target.value)
+            setEmail (e.target.value)
             break;
 
             case "password":
-            setName (e.target.value)
+            setPassword (e.target.value)
             break;
 
             default:
@@ -35,7 +35,14 @@ const handleSubmit = (e) =>{
     e.preventDefault();
     const user = {name, email, password};
     dispatch (registerThunk(user));
+    reset();
 };
+
+const reset = () => {
+    setName ("");
+    setEmail("");
+    setPassword ("");
+}
 
     return (
         <div>
@@ -61,7 +68,7 @@ const handleSubmit = (e) =>{
             <br/>
 
             <input
-                 type="text"
+                 type="password"
                  name="password"
                  value={password}
                  placeholder = "Password"
