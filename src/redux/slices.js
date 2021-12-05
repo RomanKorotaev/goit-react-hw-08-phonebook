@@ -1,5 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
-import {registerThunk, loginThunk, currentThunk} from "./thunk"
+import {registerThunk, loginThunk, currentThunk, logoutThunk} from "./thunk"
 
 
 // const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
@@ -100,6 +100,30 @@ const authSlice = createSlice ({
                     isAuth: false,
                 }
             },
+
+                  // ==============  logoutThunk ==============
+                  [logoutThunk.pending] (state,action) {
+                    return {
+                        ...state,
+                        isLoading: true,
+                    }
+                },
+                [logoutThunk.fulfilled] (state,action) {
+                    return {
+                        ...state,
+                        isLoading: false,
+                        user: {name: "", email: "" },
+                        token: '',     
+                        isAuth: false,
+                    }
+                },
+                [logoutThunk.rejected] (state,action) {
+                    return {
+                        ...state,
+                        isLoading: false,
+                        error: action.payload,
+                    }
+                },
         }
 })
 
