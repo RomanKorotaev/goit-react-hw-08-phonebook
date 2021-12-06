@@ -5,7 +5,7 @@ import ContactsList from '../ContactList/ContactList'
 export function  Home () {
     return (
         <div>
-            <h2> Home page !!!!</h2>
+            {/* <h2> Home page !!!!</h2> */}
             <ContactForm/>
             <Filter/>
             <ContactsList/>   

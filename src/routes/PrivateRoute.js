@@ -8,8 +8,7 @@ export function PrivateRoute ({isAuth, component: Component}) {
     console.log ("isAuth = ", isAuth)
     return (
         <>
-            <h1> PRIVATE ROUTE</h1>
-            {/* {isAuth ? <Component/> : <Navigate to ="/login" />} */}
+            {/* <h1> PRIVATE ROUTE</h1> */}
             {isAuth ? <Home/> : <Navigate to ="/login" />}
             
         </>

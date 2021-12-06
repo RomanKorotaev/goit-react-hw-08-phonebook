@@ -5,7 +5,7 @@ import { Navigate } from "react-router";
 export function PublicRoute ({isAuth, component: Component}) {
     return (
         <>
-            <h1> PUBLIC ROUTE</h1>
+            {/* <h1> PUBLIC ROUTE</h1> */}
             {isAuth
              ? <Navigate to = "/" />
              :<Component/> }

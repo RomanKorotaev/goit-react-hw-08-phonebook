@@ -35,31 +35,31 @@ function App() {
     }
 
   return (
-    <div className={s.container}>
-
-      <header className="App-header">
+    // <div className={s.container}>
+<div>
+      {/* <header className="App-header"> */}
+      <header  >
           <nav>
-            <ul>
+            <ul className={s.linksList}>
               <li>
-                <Link className={s.titlePhonebook} to= "/">Home </Link>
+                <Link className="" to= "/">Home </Link>
               </li>
 
               <li>
-                <Link  className={s.contactsTitle} to= "/login">Login</Link>
+                <Link  className='' to= "/login">Login</Link>
               </li>
 
               <li>
-                <Link  className={s.contactsTitle}  to= "/register">Register</Link>
+                <Link  className=""  to= "/register">Register</Link>
               </li>
-
-              <li>
-                <button type="button" onClick ={handleLogout} >Log Out</button>
-                </li>
             </ul>
-          </nav>
+
+            <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button>
+
+          </nav >
       </header>
 
-      <main>
+      <main className={s.container}>
         <Routes>
             <Route path="/" element = {<PrivateRoute isAuth={isAuth} component={Home} />} />
             <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
