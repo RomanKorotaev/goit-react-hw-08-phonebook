@@ -1,5 +1,9 @@
-import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit'
-import authReducer from './slices'
+import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
+import authReducer from './slices';
+import {rootReducer} from './reducer'
+
+import {combineReducers} from "redux";
+
 import { 
     persistStore,
      persistReducer,
@@ -17,12 +21,22 @@ const authPersistConfig = {
     whitelist: ["token"],
 }
 
+//////////
+const fullReducer = combineReducers({
+    authRe: authReducer,
+    rootRe: rootReducer
+  });
+/////////
+
 const authPersistReduser = persistReducer (authPersistConfig,authReducer);
+// const authPersistReduser = persistReducer (authPersistConfig,fullReducer);
+
 
 export const store = configureStore ({
     reducer: {
         // auth: authReducer, 
-        auth: authPersistReduser
+        auth: authPersistReduser,
+        phonebook: rootReducer
     },
     middleware: (getDefaultMiddleware)=>
     getDefaultMiddleware ({

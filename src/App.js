@@ -10,10 +10,18 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { currentThunk, logoutThunk } from './redux/thunk';
 
-const isAuth = false;
+import { useSelector } from "react-redux";
 
-
+ 
 function App() {
+
+  
+
+   const data = useSelector (state  => state);
+   console.log ("Содержимое стора =", data )
+
+  const isAuth = useSelector (state  => state.auth.isAuth);
+  console.log ("isAuth =", isAuth )
 
     const dispatch = useDispatch ();
 
