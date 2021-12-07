@@ -12,7 +12,7 @@ export function PublicRoute ({isAuth, component: Component}) {
             {
             // isAuth
             token
-             ? <Navigate to = "/" />
+             ? <Navigate to = "/contacts" />
               :<Component/> }
         </>
     )

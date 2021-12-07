@@ -61,24 +61,39 @@ console.log (" token =",  token );
               <li>
                 <Link className="" to= "/contacts">Phonebook </Link>
               </li>
+{  !token &&
+  <li>
+  <Link  className='' to= "/login">Login</Link>
+</li>
 
-              <li>
+}
+
+{  !token &&
+  <li>
+ <Link  className=""  to= "/register">Register</Link>
+</li>
+
+}
+              {/* <li>
                 <Link  className='' to= "/login">Login</Link>
               </li>
 
               <li>
                 <Link  className=""  to= "/register">Register</Link>
-              </li>
+              </li> */}
             </ul>
 
-            <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button>
+{ token &&  <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button>}
+
+
+            {/* <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button> */}
 
           </nav >
       </header>
 
       <main className={s.container}>
         <Routes>
-            <Route path="/" element = {<PrivateRoute isAuth={isAuth} component={Home} />} />
+            <Route path="/" element = { <Home/>} />
             <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
             <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
             <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} />
