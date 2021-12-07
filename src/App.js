@@ -15,10 +15,16 @@ import { currentThunk, logoutThunk } from './redux/thunk';
 
 import { useSelector } from "react-redux";
 
+
+import {getIsAuth, getName} from './redux/selectors'
  
 function App() {
 
-  
+  const isAuth0 =  useSelector (getIsAuth)
+  console.log ("Содержимое isAuth0 =", isAuth0 )
+
+  const name =  useSelector (getName)
+  console.log ("Содержимое name =", name )
 
 const data = useSelector (state  => state);
 console.log ("Содержимое стора =", data )
