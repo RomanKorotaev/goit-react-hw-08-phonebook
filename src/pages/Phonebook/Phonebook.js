@@ -2,13 +2,13 @@ import ContactForm from '../ContactForm/ContactForm'
 import Filter from '../Filter/Filter'
 import ContactsList from '../ContactList/ContactList'
 
-export function  Home () {
+export function  Phonebook () {
     return (
         <div>
-            <h2> Wellcome to Phonebook application! </h2>
-            {/* <ContactForm/>
+            <h2> Contacts : </h2>
+            <ContactForm/>
             <Filter/>
-            <ContactsList/>    */}
+            <ContactsList/>   
 
         </div>
     )

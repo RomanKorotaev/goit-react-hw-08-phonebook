@@ -1,8 +1,11 @@
 import {Link, Routes, Route} from 'react-router-dom';
 import s from "./App.module.css";
+
 import {Home} from './pages/Home/Home';
 import {Register} from './pages/Register/Register';
 import {Login} from './pages/Login/Login';
+import { Phonebook } from './pages/Phonebook/Phonebook';
+
 import {PrivateRoute} from './routes/PrivateRoute';
 import {PublicRoute} from './routes/PublicRoute';
 
@@ -56,6 +59,10 @@ console.log (" token =",  token );
               </li>
 
               <li>
+                <Link className="" to= "/contacts">Phonebook </Link>
+              </li>
+
+              <li>
                 <Link  className='' to= "/login">Login</Link>
               </li>
 
@@ -72,6 +79,7 @@ console.log (" token =",  token );
       <main className={s.container}>
         <Routes>
             <Route path="/" element = {<PrivateRoute isAuth={isAuth} component={Home} />} />
+            <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
             <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
             <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} />
         </Routes>
