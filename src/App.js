@@ -17,17 +17,28 @@ function App() {
 
   
 
-   const data = useSelector (state  => state);
-   console.log ("Содержимое стора =", data )
+const data = useSelector (state  => state);
+console.log ("Содержимое стора =", data )
 
-  const isAuth = useSelector (state  => state.auth.isAuth);
-  console.log ("isAuth =", isAuth )
+const isAuth = useSelector (state  => state.auth.isAuth);
+console.log ("isAuth =", isAuth )
+
+const  token = useSelector (state  => state.auth.token);
+console.log (" token =",  token );
+
+  if (token) {
+    console.log (" token exists =",  token );
+ } else {
+    console.log ("NO  token = ",  token ); } 
+
 
     const dispatch = useDispatch ();
 
-    useEffect ( ()=> {
-      dispatch(currentThunk());
-    }, [dispatch])
+
+    // useEffect ( ()=> {
+    //  dispatch(currentThunk());
+    // }, [dispatch])
+
 
     const handleLogout = ()=> {
       console.log ("Click! ;)")
@@ -35,9 +46,8 @@ function App() {
     }
 
   return (
-    // <div className={s.container}>
+    
 <div>
-      {/* <header className="App-header"> */}
       <header  >
           <nav>
             <ul className={s.linksList}>
