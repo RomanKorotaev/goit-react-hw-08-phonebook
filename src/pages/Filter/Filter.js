@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Filter.module.css";
 import PropTypes from 'prop-types';
 import { connect } from "react-redux";
-// import {setFilter} from '../../redux/actions'
+import {setFilter} from '../../redux/actions'
 
 
 function FilterHooks ({ handleFilter3}) {
@@ -41,8 +41,7 @@ function FilterHooks ({ handleFilter3}) {
    const mapDispatchToProps = dispatch => {
     return {
       //Здесь название локальной функции придумывавем сами
-    //   handleFilter3: data => dispatch (setFilter(data))
-    handleFilter3: data => 1
+      handleFilter3: data => dispatch (setFilter(data))
     }
   } 
    
