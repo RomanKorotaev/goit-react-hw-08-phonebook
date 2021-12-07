@@ -5,10 +5,10 @@ import { useSelector } from "react-redux";
 export function PublicRoute ({isAuth, component: Component}) {
    
     const  token = useSelector (state  => state.auth.token);
-    
+
     return (
         <>
-            <h1> PUBLIC ROUTE</h1>
+            {/* <h1> PUBLIC ROUTE</h1> */}
             {
             // isAuth
             token

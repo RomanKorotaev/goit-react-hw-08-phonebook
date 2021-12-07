@@ -7,7 +7,7 @@ export function PrivateRoute ({isAuth, component: Component}) {
     const  token = useSelector (state  => state.auth.token);
     return (
         <>
-            <h1> PRIVATE ROUTE</h1>
+            {/* <h1> PRIVATE ROUTE</h1> */}
             {  
             //  isAuth
             token

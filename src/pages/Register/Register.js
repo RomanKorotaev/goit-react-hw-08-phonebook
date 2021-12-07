@@ -46,7 +46,7 @@ const reset = () => {
 
     return (
         <div>
-            <h2>Register Form</h2>
+            {/* <h2>Register Form</h2> */}
             <form onSubmit={handleSubmit}>
                 <input
                  type="text"

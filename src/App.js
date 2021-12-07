@@ -26,10 +26,10 @@ console.log ("isAuth =", isAuth )
 const  token = useSelector (state  => state.auth.token);
 console.log (" token =",  token );
 
-  if (token) {
-    console.log (" token exists =",  token );
- } else {
-    console.log ("NO  token = ",  token ); } 
+//   if (token) {
+//     console.log (" token exists =",  token );
+//  } else {
+//     console.log ("NO  token = ",  token ); } 
 
 
     const dispatch = useDispatch ();
