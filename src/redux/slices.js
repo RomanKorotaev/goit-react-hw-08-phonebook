@@ -74,7 +74,9 @@ const authSlice = createSlice ({
                 return {
                     ...state,
                     isLoading: false,
-                    error: action.payload
+                    error: action.payload,
+                    ///
+                    isAuth: false
                 }
             },
 
@@ -83,6 +85,8 @@ const authSlice = createSlice ({
                 return {
                     ...state,
                     isLoading: true,
+                    // isLoading: false,
+                    isAuth: false
                    
                 }
             },
@@ -92,7 +96,7 @@ const authSlice = createSlice ({
                     isLoading: false,
                     user: action.payload,
                     isAuth: true,
-                    // isAuth: false,
+                
                 }
             },
             [currentThunk.rejected] (state,action) {

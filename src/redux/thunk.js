@@ -21,8 +21,7 @@ const response = await fetch(BASE_USER_URL + userRegister, {
     });
     console.log ("response", response);
     const data = await response.json();
-    console.log ("data", data); //{user: {name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}, token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…wMTN9.1N76a-NE-wTt5M4UYuFCfkuYIDJsw6Ah-hA2glSRZvY'}
-    //"germiona_greinger@gmail.com"
+    console.log ("data", data); 
     return data; //action.payload
     } catch (err){
         rejectWithValue ({error: err.message})
@@ -43,8 +42,7 @@ const response = await fetch(BASE_USER_URL + userLogin, {
     });
     console.log ("response", response);
     const data = await response.json();
-    console.log ("data", data); //{user: {name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}, token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…wMTN9.1N76a-NE-wTt5M4UYuFCfkuYIDJsw6Ah-hA2glSRZvY'}
-    //"germiona_greinger@gmail.com"
+    console.log ("data", data); 
     return data; //action.payload
     } catch (err){
         rejectWithValue ({error: err.message})
@@ -54,38 +52,72 @@ const response = await fetch(BASE_USER_URL + userLogin, {
 // ============= CURRENT USER THUNK =============
 export const currentThunk = createAsyncThunk (
     "user/current",
-    async (user, {rejectWithValue, getState})=> {
+    async (_, {rejectWithValue, getState})=> {
         const state= getState();
         console.log ("redux store:   state= getState()  : ",state);
         console.log ("redux store:  state.auth =  : ",state.auth);
-        console.log ("redux store:  state.auth.token =  : ",state.auth.token)
+        console.log ("redux store:  state.auth.token =  : ",state.auth.token);
+
+        ///////////
+        // console.log (" thunkAPI.getState", thunkAPI.getState)
        
         const token = state.auth.token;
         // if (!state.auth.token) return;
-        if (!token) return;
+        // if (!token) return;
+        if (token===""){
+            console.log ("Токена нет - уходим из currentThunk")
+            return;
+                } else {
+                    console.log ("Произошёл вызов! При этом токен равен = ", token)
+                    
+                    try{
+                        const response = await fetch(BASE_USER_URL + userCurrent, {
+                                method: 'GET',
+                                headers: {
+                                    // "Content-Type": "application/json",
+                                    // "Authorization" : `Bearer ${state.auth.token}`,
+                
+                                    // Authorization : `Bearer ${state.auth.token}`,
+                                    Authorization : `Bearer ${token}`,
+                                },
+                            
+                                });
+                                console.log ("response", response);
+                                const data = await response.json();
+                                console.log ("data = await response.json()   : ", data); 
+                                
+                                return data; //action.payload
+                        } catch (err){
+                            console.log ("err = ", err)
+                                // rejectWithValue ({error: err.message});
+                                rejectWithValue (err.message)
+                            }
 
-    try{
-        const response = await fetch(BASE_USER_URL + userCurrent, {
-                method: 'GET',
-                headers: {
-                    // "Content-Type": "application/json",
-                    // "Authorization" : `Bearer ${state.auth.token}`,
 
-                    // Authorization : `Bearer ${state.auth.token}`,
-                    Authorization : `Bearer ${token}`,
-                },
+                }
+
+    // try{
+    //     const response = await fetch(BASE_USER_URL + userCurrent, {
+    //             method: 'GET',
+    //             headers: {
+    //                 // "Content-Type": "application/json",
+    //                 // "Authorization" : `Bearer ${state.auth.token}`,
+
+    //                 // Authorization : `Bearer ${state.auth.token}`,
+    //                 Authorization : `Bearer ${token}`,
+    //             },
             
-                });
-                console.log ("response", response);
-                const data = await response.json();
-                console.log ("data = await response.json()   : ", data); //{name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}
-                //"germiona_greinger@gmail.com"
-                return data; //action.payload
-        } catch (err){
-            console.log ("err = ", err)
-                // rejectWithValue ({error: err.message});
-                rejectWithValue (err.message)
-            }
+    //             });
+    //             console.log ("response", response);
+    //             const data = await response.json();
+    //             console.log ("data = await response.json()   : ", data); 
+                
+    //             return data; //action.payload
+    //     } catch (err){
+    //         console.log ("err = ", err)
+    //             // rejectWithValue ({error: err.message});
+    //             rejectWithValue (err.message)
+    //         }
 })
 
 // ============= LOGOUT THUNK =============
@@ -102,6 +134,7 @@ export const logoutThunk = createAsyncThunk (
         const token = state.auth.token;
         // if (!state.auth.token) return;
         if (!token) return;
+
            try{
                 const response = await fetch(BASE_USER_URL + userLogout, {
                 method: 'POST',
@@ -114,8 +147,8 @@ export const logoutThunk = createAsyncThunk (
                 });
                 console.log ("response", response);
                 const data = await response.json();
-                console.log ("data = await response.json()   : ", data); //{name: 'Germiona Greinger', email: 'germiona_greinger@gmail.com'}
-                //"germiona_greinger@gmail.com"
+                console.log ("data = await response.json()   : ", data); 
+                
                 return data; //action.payload
         } catch (err){
             console.log ("err = ", err)

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 // react-компонент должен быть указан с заглавной буквы
 export function PrivateRoute ({isAuth, component: Component}) {
-    console.log ("isAuth = ", isAuth)
+    // console.log ("isAuth = ", isAuth)
     const  token = useSelector (state  => state.auth.token);
     return (
         <>

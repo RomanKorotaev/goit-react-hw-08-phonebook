@@ -29,7 +29,6 @@ function ContactsList () {
   useEffect(() => {
     //Первая загрузка. Вытаскиваем из бекенда имеющиеся там контакты
     dispatch (fetchContactsV2())
-  
   console.log ('СРАБОТАЛ useEffect один раз при первой загрузке компонента ContactsList')
   }, []);
 

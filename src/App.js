@@ -23,8 +23,8 @@ function App() {
   const isAuth0 =  useSelector (getIsAuth)
   console.log ("Содержимое isAuth0 =", isAuth0 )
 
-  const name =  useSelector (getName)
-  console.log ("Содержимое name =", name )
+  // const name =  useSelector (getName)
+  // console.log ("Содержимое name =", name )
 
 const data = useSelector (state  => state);
 console.log ("Содержимое стора =", data )
@@ -44,9 +44,10 @@ console.log (" token =",  token );
     const dispatch = useDispatch ();
 
 
-    // useEffect ( ()=> {
-    //  dispatch(currentThunk());
-    // }, [dispatch])
+    useEffect ( ()=> {
+      console.log (" Произошёл dispatch(currentThunk() "); 
+     dispatch(currentThunk());
+    }, [dispatch])
 
 
     const handleLogout = ()=> {
@@ -100,9 +101,13 @@ console.log (" token =",  token );
       <main className={s.container}>
         <Routes>
             <Route path="/" element = { <Home/>} />
-            <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
+            {/* <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
             <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
-            <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} />
+            <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} /> */}
+
+            <Route path="/contacts" element = {<PrivateRoute component={Phonebook} />} />
+            <Route path="/login" element = {<PublicRoute  component={Login}/>} />
+            <Route path="/register" element = {<PublicRoute  component={Register}/>} />
         </Routes>
 
       </main>
