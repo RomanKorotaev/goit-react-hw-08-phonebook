@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./Filter.module.css";
-import PropTypes from 'prop-types';
+
 import { connect } from "react-redux";
 import {setFilter} from '../../redux/actions'
 

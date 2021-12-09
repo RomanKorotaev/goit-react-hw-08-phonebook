@@ -12,26 +12,17 @@ import {PublicRoute} from './routes/PublicRoute';
 
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { currentThunk, logoutThunk } from './redux/thunk';
+import { currentThunk } from './redux/thunk';
 
 import { useSelector } from "react-redux";
 
 
-import {getIsAuth, getName} from './redux/selectors'
+import {getIsAuth, getToken} from './redux/selectors'
  
 function App() {
 
-//   const isAuth0 =  useSelector (getIsAuth)
-//   console.log ("Содержимое isAuth0 =", isAuth0 )
-
-// const data = useSelector (state  => state);
-// console.log ("Содержимое стора =", data )
-
-const isAuth = useSelector (state  => state.auth.isAuth);
-console.log ("isAuth =", isAuth )
-
-const  token = useSelector (state  => state.auth.token);
-console.log (" token =",  token );
+const isAuth = useSelector (getIsAuth);
+const  token = useSelector (getToken);
 
 
     const dispatch = useDispatch ();
@@ -40,7 +31,7 @@ console.log (" token =",  token );
     useEffect ( ()=> {
      
       if (token) {
-         console.log (" Произошёл dispatch(currentThunk() "); 
+        //  console.log (" Произошёл dispatch(currentThunk() "); 
         dispatch(currentThunk())
       } 
     }, [dispatch])

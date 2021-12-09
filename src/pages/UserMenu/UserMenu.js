@@ -3,6 +3,7 @@ import s from './userMenu.module.css'
  
 import { useSelector, useDispatch } from "react-redux";
 import {logoutThunk} from '../../redux/thunk'
+import {getName} from '../../redux/selectors'
 
 export function UserMenu () {
 
@@ -12,9 +13,7 @@ export function UserMenu () {
         dispatch(logoutThunk());
       }
 
-
-    const name = useSelector (state  => state.auth.user.name);
-console.log ("name =", name )
+    const name = useSelector (getName);
 
 return(
     <div className={s.userMenuStyle}>

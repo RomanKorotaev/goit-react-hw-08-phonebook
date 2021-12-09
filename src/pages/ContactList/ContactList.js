@@ -51,8 +51,7 @@ let visibleContacts = getVisibleContact();
           <ul className= {s.ContactsListStyle}>
                 {visibleContacts.length<1
                   ?   ( <p className={s.item}> List of contacts is empty </p> )
-                  :   ( visibleContacts.map(({id, name, number}) => (
-                          
+                  :   ( visibleContacts.map(({id, name, number}) => (                          
                         <li  className= {s.item}  key = {id}>
                               <Contact name={name} number ={number} onDelete = {()=>dispatch(deleteContactV2(id))} />
                         </li>

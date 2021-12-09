@@ -8,5 +8,6 @@ export const getLoading = state =>state.phonebook.loading;
 
 
 ///////
+export const getToken = state => state.auth.token;
 export const getIsAuth = state => state.auth.isAuth;
 export const getName = state => state.auth.user.name;

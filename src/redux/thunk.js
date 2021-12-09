@@ -40,9 +40,9 @@ const response = await fetch(BASE_USER_URL + userLogin, {
     },
     body: JSON.stringify(user)
     });
-    console.log ("response", response);
+    // console.log ("response", response);
     const data = await response.json();
-    console.log ("data", data); 
+    // console.log ("data", data); 
     return data; //action.payload
     } catch (err){
         rejectWithValue ({error: err.message})
@@ -54,19 +54,16 @@ export const currentThunk = createAsyncThunk (
     "user/current",
     async (_, {rejectWithValue, getState})=> {
         const state= getState();
-        console.log ("redux store:   state= getState()  : ",state);
-        console.log ("redux store:  state.auth =  : ",state.auth);
-        console.log ("redux store:  state.auth.token =  : ",state.auth.token);
+        // console.log ("redux store:   state= getState()  : ",state);
+        // console.log ("redux store:  state.auth =  : ",state.auth);
+        // console.log ("redux store:  state.auth.token =  : ",state.auth.token);
 
-        ///////////
-        // console.log (" thunkAPI.getState", thunkAPI.getState)
-       
         const token = state.auth.token;
         // if (!state.auth.token) return;
         // if (!token) return;
         // if (token===""){
             if (!token) {
-            console.log ("Токена нет - уходим из currentThunk")
+            // console.log ("Токена нет - уходим из currentThunk")
             return;
 
                 } else {
@@ -82,9 +79,9 @@ export const currentThunk = createAsyncThunk (
                                 },
                             
                                 });
-                                console.log ("response", response);
+                                // console.log ("response", response);
                                 const data = await response.json();
-                                console.log ("data = await response.json()   : ", data); 
+                                // console.log ("data = await response.json()   : ", data); 
                                 
                                 return data; //action.payload
                         } catch (err){
@@ -96,28 +93,6 @@ export const currentThunk = createAsyncThunk (
 
                 }
 
-    // try{
-    //     const response = await fetch(BASE_USER_URL + userCurrent, {
-    //             method: 'GET',
-    //             headers: {
-    //                 // "Content-Type": "application/json",
-    //                 // "Authorization" : `Bearer ${state.auth.token}`,
-
-    //                 // Authorization : `Bearer ${state.auth.token}`,
-    //                 Authorization : `Bearer ${token}`,
-    //             },
-            
-    //             });
-    //             console.log ("response", response);
-    //             const data = await response.json();
-    //             console.log ("data = await response.json()   : ", data); 
-                
-    //             return data; //action.payload
-    //     } catch (err){
-    //         console.log ("err = ", err)
-    //             // rejectWithValue ({error: err.message});
-    //             rejectWithValue (err.message)
-    //         }
 })
 
 // ============= LOGOUT THUNK =============
@@ -145,9 +120,9 @@ export const logoutThunk = createAsyncThunk (
                 },
             
                 });
-                console.log ("response", response);
+                // console.log ("response", response);
                 const data = await response.json();
-                console.log ("data = await response.json()   : ", data); 
+                // console.log ("data = await response.json()   : ", data); 
                 
                 return data; //action.payload
         } catch (err){

@@ -1,6 +1,5 @@
 import React, { useState} from "react";
 import s from "./ContactForm.module.css";
-import PropTypes from 'prop-types';
 
 import { addContactV2} from '../../redux/contacts-operations'
 

@@ -1,5 +1,6 @@
 .userMenuStyle {
   display: flex;
+  font-style: italic;
 }
 
 .logOutBtm {
