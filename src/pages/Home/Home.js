@@ -9,11 +9,7 @@ export function  Home () {
     return (
         <div>
             <h2 className={s.homePageTitle}> Wellcome to Phonebook application! </h2>
-            <img src={phoneBookImg} />
-            {/* <ContactForm/>
-            <Filter/>
-            <ContactsList/>    */}
-
+            <img className={s.phoneBookImgStyle} src={phoneBookImg} alt="picture of phonebook"/>
         </div>
     )
 }

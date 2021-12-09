@@ -9,3 +9,9 @@
   margin: 0 auto;
   margin-bottom: 20px;
 }
+
+.phoneBookImgStyle {
+  width: 600px;
+  display: block;
+  margin: 0 auto;
+}

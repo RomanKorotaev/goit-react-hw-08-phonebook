@@ -1,6 +1,5 @@
 import s from './userMenu.module.css'
 
-// import {getIsAuth, getName} from './redux/selectors'
  
 import { useSelector, useDispatch } from "react-redux";
 import {logoutThunk} from '../../redux/thunk'
@@ -20,7 +19,7 @@ console.log ("name =", name )
 return(
     <div className={s.userMenuStyle}>
         <h3 className= {s.greeting}>Welcome, {name} </h3>
-        <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button>
+        <button type="button" onClick ={handleLogout} className={s.logOutBtm} >Log Out</button>
         </div>
 )
 

@@ -46,73 +46,54 @@ console.log (" token =",  token );
     }, [dispatch])
 
 
-    // const handleLogout = ()=> {
-    //   console.log ("Click! ;)")
-    //   dispatch(logoutThunk());
-    // }
-
   return (
     
-<div>
-      <header  >
-          <nav>
-            <ul className={s.linksList}>
-              <li>
-                <Link className="" to= "/">Home </Link>
-              </li>
+    <div>
+        <header  >
+            <nav>
+              <ul className={s.linksList}>
+                <li>
+                  <Link className={s.linkItem} to= "/">Home </Link>
+                </li>
 
-              <li>
-                <Link className="" to= "/contacts">Phonebook </Link>
-              </li>
+                <li>
+                  <Link className={s.linkItem} to= "/contacts">Phonebook </Link>
+                </li>
 
-            { !isAuth &&
-              <li>
-              <Link  className='' to= "/login">Login</Link>
-            </li>
+                { !isAuth &&
+                  <li>
+                  <Link  className={s.linkItem} to= "/login">Login</Link>
+                </li>
+                }
 
-            }
+                { !isAuth &&
+                  <li>
+                <Link  className={s.linkItem}  to= "/register">Register</Link>
+                </li>
+                }
+              
+                { isAuth  &&   <li><UserMenu/> </li>}        
 
-            { !isAuth &&
-              <li>
-            <Link  className=""  to= "/register">Register</Link>
-            </li>
-            }
+              </ul>
+    
+            </nav >
+        </header>
 
-              {/* <li>
-                <Link  className='' to= "/login">Login</Link>
-              </li>
+        <main className={s.container}>
+          <Routes>
+              <Route path="/" element = { <Home/>} />
+              {/* <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
+              <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
+              <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} /> */}
 
-              <li>
-                <Link  className=""  to= "/register">Register</Link>
-              </li> */}
+              <Route path="/contacts" element = {<PrivateRoute component={Phonebook} />} />
+              <Route path="/login" element = {<PublicRoute  component={Login}/>} />
+              <Route path="/register" element = {<PublicRoute  component={Register}/>} />
+          </Routes>
 
-  {/* { isAuth  &&   <li><button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button> </li>} */}
-{ isAuth  &&   <li><UserMenu/> </li>}        
+        </main>
 
-            </ul>
-            {/* <UserMenu/> */}
-
-
-            {/* <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button> */}
-
-          </nav >
-      </header>
-
-      <main className={s.container}>
-        <Routes>
-            <Route path="/" element = { <Home/>} />
-            {/* <Route path="/contacts" element = {<PrivateRoute isAuth={isAuth} component={Phonebook} />} />
-            <Route path="/login" element = {<PublicRoute isAuth={isAuth} component={Login}/>} />
-            <Route path="/register" element = {<PublicRoute isAuth={isAuth} component={Register}/>} /> */}
-
-            <Route path="/contacts" element = {<PrivateRoute component={Phonebook} />} />
-            <Route path="/login" element = {<PublicRoute  component={Login}/>} />
-            <Route path="/register" element = {<PublicRoute  component={Register}/>} />
-        </Routes>
-
-      </main>
-
-    </div>
+      </div>
   );
 }
 
