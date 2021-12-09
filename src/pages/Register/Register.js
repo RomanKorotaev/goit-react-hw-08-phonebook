@@ -1,7 +1,7 @@
 import {useState} from "react"
 import { useDispatch } from "react-redux";
 import {registerThunk} from '../../redux/thunk'
-
+import s from './Register.module.css'
 export function  Register () {
 
 const [name, setName]= useState ("");
@@ -46,7 +46,7 @@ const reset = () => {
 
     return (
         <div>
-            <h2>Register Form</h2>
+            <h2 className={s.title}>Register Form</h2>
             <form onSubmit={handleSubmit}>
                 <input
                  type="text"

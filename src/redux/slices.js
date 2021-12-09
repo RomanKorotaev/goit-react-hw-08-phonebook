@@ -2,13 +2,6 @@ import {createSlice} from '@reduxjs/toolkit'
 import {registerThunk, loginThunk, currentThunk, logoutThunk} from "./thunk"
 
 
-// const BASE_USER_URL = `https://connections-api.herokuapp.com/` ;
-
-// const userLogin = '/users/login'
-// const userRegister = '/users/signup'
-// const userLogout = '/users/logout'
-// const userCurrent = '/users/current'
-
 const authSlice = createSlice ({
     name: "auth",
     initialState: {
@@ -137,7 +130,3 @@ const authSlice = createSlice ({
 
 export  const {renameProp} = authSlice.actions;
 export default authSlice.reducer;
-
-// ====================== CONTACTS ======================
-// const BASE_CONTACT_URL = `https://619a41019022ea0017a7b0ae.mockapi.io/api_phonebook/v1/`
-// const contacts = `/contacts` ;

@@ -1,4 +1,4 @@
-
+import s from './Login.module.css'
 import {useState} from "react"
 import { useDispatch } from "react-redux";
 import {loginThunk} from '../../redux/thunk'
@@ -42,7 +42,7 @@ export function  Login () {
 
         return (
             <div>
-                <h2>Login Form</h2>
+                <h2 className={s.title}>Login Form</h2>
                 <form onSubmit={handleSubmit}>
 
                 <br/>

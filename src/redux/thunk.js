@@ -64,12 +64,12 @@ export const currentThunk = createAsyncThunk (
         const token = state.auth.token;
         // if (!state.auth.token) return;
         // if (!token) return;
-        if (token===""){
+        // if (token===""){
+            if (!token) {
             console.log ("Токена нет - уходим из currentThunk")
             return;
+
                 } else {
-                    console.log ("Произошёл вызов! При этом токен равен = ", token)
-                    
                     try{
                         const response = await fetch(BASE_USER_URL + userCurrent, {
                                 method: 'GET',

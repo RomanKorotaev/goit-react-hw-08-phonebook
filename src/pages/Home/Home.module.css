@@ -1,0 +1,11 @@
+.homePageTitle {
+  display: block;
+
+  font-size: 30px;
+  font-weight: 700;
+  font-style: italic;
+  color: white;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}

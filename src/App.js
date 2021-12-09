@@ -4,7 +4,8 @@ import s from "./App.module.css";
 import {Home} from './pages/Home/Home';
 import {Register} from './pages/Register/Register';
 import {Login} from './pages/Login/Login';
-import { Phonebook } from './pages/Phonebook/Phonebook';
+import {Phonebook} from './pages/Phonebook/Phonebook';
+import { UserMenu } from './pages/UserMenu/UserMenu';
 
 import {PrivateRoute} from './routes/PrivateRoute';
 import {PublicRoute} from './routes/PublicRoute';
@@ -20,14 +21,11 @@ import {getIsAuth, getName} from './redux/selectors'
  
 function App() {
 
-  const isAuth0 =  useSelector (getIsAuth)
-  console.log ("Содержимое isAuth0 =", isAuth0 )
+//   const isAuth0 =  useSelector (getIsAuth)
+//   console.log ("Содержимое isAuth0 =", isAuth0 )
 
-  // const name =  useSelector (getName)
-  // console.log ("Содержимое name =", name )
-
-const data = useSelector (state  => state);
-console.log ("Содержимое стора =", data )
+// const data = useSelector (state  => state);
+// console.log ("Содержимое стора =", data )
 
 const isAuth = useSelector (state  => state.auth.isAuth);
 console.log ("isAuth =", isAuth )
@@ -35,25 +33,23 @@ console.log ("isAuth =", isAuth )
 const  token = useSelector (state  => state.auth.token);
 console.log (" token =",  token );
 
-//   if (token) {
-//     console.log (" token exists =",  token );
-//  } else {
-//     console.log ("NO  token = ",  token ); } 
-
 
     const dispatch = useDispatch ();
 
 
     useEffect ( ()=> {
-      console.log (" Произошёл dispatch(currentThunk() "); 
-     dispatch(currentThunk());
+     
+      if (token) {
+         console.log (" Произошёл dispatch(currentThunk() "); 
+        dispatch(currentThunk())
+      } 
     }, [dispatch])
 
 
-    const handleLogout = ()=> {
-      console.log ("Click! ;)")
-      dispatch(logoutThunk());
-    }
+    // const handleLogout = ()=> {
+    //   console.log ("Click! ;)")
+    //   dispatch(logoutThunk());
+    // }
 
   return (
     
@@ -68,19 +64,20 @@ console.log (" token =",  token );
               <li>
                 <Link className="" to= "/contacts">Phonebook </Link>
               </li>
-{  !token &&
-  <li>
-  <Link  className='' to= "/login">Login</Link>
-</li>
 
-}
+            { !isAuth &&
+              <li>
+              <Link  className='' to= "/login">Login</Link>
+            </li>
 
-{  !token &&
-  <li>
- <Link  className=""  to= "/register">Register</Link>
-</li>
+            }
 
-}
+            { !isAuth &&
+              <li>
+            <Link  className=""  to= "/register">Register</Link>
+            </li>
+            }
+
               {/* <li>
                 <Link  className='' to= "/login">Login</Link>
               </li>
@@ -88,9 +85,12 @@ console.log (" token =",  token );
               <li>
                 <Link  className=""  to= "/register">Register</Link>
               </li> */}
-            </ul>
 
-{ token &&  <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button>}
+  {/* { isAuth  &&   <li><button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button> </li>} */}
+{ isAuth  &&   <li><UserMenu/> </li>}        
+
+            </ul>
+            {/* <UserMenu/> */}
 
 
             {/* <button type="button" onClick ={handleLogout} className={s.logOutBottom}>Log Out</button> */}
